@@ -1,1 +1,50 @@
-<p>medicines works!</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div class="containers">
+    <div class="diseases">
+      <div *ngFor="let disease of diseases">
+        <input type="radio" class="diseases" value="{{disease.name}}" [(ngModel)]="selectedDisease"
+          (change)="getMedicines()" class="btn-check" name="options" id="{{disease.name}}" autocomplete="off">
+        <label class="btn btn-secondary diseases-btn" for="{{disease.name}}">{{disease.name}}</label>
+      </div>
+    </div>
+
+    <div class="medicines">
+
+      <div class="item" *ngFor="let item of medicines">
+
+        <div class="card">
+          <div class="card-img-wrapper">
+            <img class="card-img-top" src="{{item.picture}}" alt="Card image cap">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{item.name}}</h5>
+            <ul class="prices">
+              <li><strong> Price:</strong>500</li>
+              <li><strong> Current:</strong>{{item.price}}</li>
+              <li><strong> Discount:</strong>200</li>
+            </ul>
+            <div class="card-content">
+              <p class="card-text">{{item.description}}</p>
+              <a href="#" class="btn btn-primary">Buy</a>
+            </div>
+          </div>
+        </div>
+        <!-- Test end -->
+      </div>
+    </div>
+  </div>
+</body>
+
+
+</html>
