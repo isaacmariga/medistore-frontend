@@ -1,11 +1,27 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+<<<<<<< HEAD
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "medistore-frontend": {
       "projectType": "application",
       "schematics": {},
+=======
+  "cli": {
+    "analytics": "6d0b3450-d1f3-4fa8-8c19-c7c58c9378e5"
+  },
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "medistore-front": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+>>>>>>> 8ada77bdcc9959fd639c0c894f65350d381238d6
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,7 +29,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+<<<<<<< HEAD
             "outputPath": "dist/medistore-frontend",
+=======
+            "outputPath": "dist/medistore-front",
+>>>>>>> 8ada77bdcc9959fd639c0c894f65350d381238d6
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -64,10 +84,17 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
+<<<<<<< HEAD
               "browserTarget": "medistore-frontend:build:production"
             },
             "development": {
               "browserTarget": "medistore-frontend:build:development"
+=======
+              "browserTarget": "medistore-front:build:production"
+            },
+            "development": {
+              "browserTarget": "medistore-front:build:development"
+>>>>>>> 8ada77bdcc9959fd639c0c894f65350d381238d6
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +102,11 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
+<<<<<<< HEAD
             "browserTarget": "medistore-frontend:build"
+=======
+            "browserTarget": "medistore-front:build"
+>>>>>>> 8ada77bdcc9959fd639c0c894f65350d381238d6
           }
         },
         "test": {
@@ -98,7 +129,11 @@
       }
     }
   },
+<<<<<<< HEAD
   "cli": {
     "analytics": "c1aa0494-6509-4111-93fa-b262bac5d15e"
   }
+=======
+  "defaultProject": "medistore-front"
+>>>>>>> 8ada77bdcc9959fd639c0c894f65350d381238d6
 }
