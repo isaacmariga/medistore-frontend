@@ -9,7 +9,7 @@ import { MedicinesComponent } from './medicines/medicines.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MainComponent } from './main/main.component';
 import { FormsModule } from '@angular/forms';
-import { DiseasesComponent } from './diseases/diseases.component';
+import { SingleMedicineComponent } from './single-medicine/single-medicine.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { DiseasesComponent } from './diseases/diseases.component';
     MedicinesComponent,
     NavbarComponent,
     MainComponent,
-    DiseasesComponent,
+    SingleMedicineComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
