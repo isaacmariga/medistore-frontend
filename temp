@@ -1,0 +1,69 @@
+<div class="container-fluid">
+  <h2 class="text-center">Create a new Goal</h2>
+  <hr>
+  <form novalidate #testForm="ngForm" (ngSubmit)="getText(testForm.value)">
+    <div>
+      <label for="name">name</label>
+      <input type="text" #name='ngModel' ngModel name="name" required id="name">
+      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+        <p>Name is required</p>
+      </div>
+    </div>
+    <div>
+      <label for="name">price</label>
+      <input type="number" #price='ngModel' ngModel name="price" required id="price">
+      <div [hidden]="price.valid || name.pristine" class="alert alert-danger">
+        <p>price is required</p>
+      </div>
+    </div>
+
+    <div>
+      <label for="name">description</label>
+      <input type="text" ngModel #description='ngModel' name="description" required id="description">
+      <div [hidden]="description.valid || name.pristine" class="alert alert-danger">
+        <p>description is required</p>
+      </div>
+    </div>https://github.com/isaacmariga/medisite-backend/invitations
+    <input type="submit" value="Post" />
+
+  </form>
+</div>
+
+
+
+<!-- typescript  -->
+
+import {
+FormGroup,
+FormBuilder,
+FormArray,
+FormControl,
+Validators,
+} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
+selector: 'app-medicine-form',
+templateUrl: './medicine-form.component.html',
+styleUrls: ['./medicine-form.component.css'],
+})
+export class MedicineFormComponent implements OnInit {
+myForm: FormGroup;
+
+getText(data: any) {
+if (this.myForm.valid) {
+console.log('valid');
+}
+this.http
+.post(this.url, data)
+.toPromise()
+.then((data) => {});
+}
+
+url = 'https://medistore-apis.herokuapp.com/api/medicines/';
+
+constructor(private http: HttpClient, private fb: FormBuilder) {}
+
+ngOnInit(): void {}
+}

@@ -4,12 +4,16 @@ import { LandingComponent } from './landing/landing.component';
 import { MedicinesComponent } from './medicines/medicines.component';
 import { MainComponent } from './main/main.component';
 import { SingleMedicineComponent } from './single-medicine/single-medicine.component';
+import { MedicineFormComponent } from './medicine-form/medicine-form.component';
+import { ShoppingFormComponent } from './shopping-form/shopping-form.component';
 
 const routes: Routes = [
-  { path: 'landing', component: LandingComponent },
+  { path: '', component: LandingComponent },
   { path: 'medicines', component: MedicinesComponent },
   { path: 'main', component: MainComponent },
   { path: 'single/:id', component: SingleMedicineComponent },
+  { path: 'medicine-form', component: MedicineFormComponent },
+  { path: 'shopping-form', component: ShoppingFormComponent },
 ];
 
 @NgModule({

@@ -131,7 +131,7 @@ li {
   border-radius: 10px;
   border-width: 2px;
   border-style: solid;
-  border-color: rgb(0, 0, 0);
+  border-color: rgba(0, 0, 0, 0.459);
 }
 
 .modal-content {
