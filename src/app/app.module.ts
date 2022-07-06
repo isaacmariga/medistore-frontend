@@ -8,8 +8,10 @@ import { LandingComponent } from './landing/landing.component';
 import { MedicinesComponent } from './medicines/medicines.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MainComponent } from './main/main.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SingleMedicineComponent } from './single-medicine/single-medicine.component';
+import { MedicineFormComponent } from './medicine-form/medicine-form.component';
+import { ShoppingFormComponent } from './shopping-form/shopping-form.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +21,16 @@ import { SingleMedicineComponent } from './single-medicine/single-medicine.compo
     NavbarComponent,
     MainComponent,
     SingleMedicineComponent,
+    MedicineFormComponent,
+    ShoppingFormComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

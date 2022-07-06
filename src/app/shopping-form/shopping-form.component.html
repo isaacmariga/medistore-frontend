@@ -1,0 +1,18 @@
+<div class="container">
+  <form novalidate [formGroup]="myForm" #testForm="ngForm" (ngSubmit)="getText(testForm.value)">
+    <div class=" form-group">
+      <label>Medicine</label>
+      <input type="number" class="form-control" formControlName="medicine">
+    </div>
+    <label>Number</label>
+    <input type="number" class="form-control" formControlName="units">
+    <div class="form-group">
+      <label>User</label>
+      <select class="form-control" formControlName="buyer">
+        <option value="">Please select a User</option>
+        <option [value]="1">Mariga</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
