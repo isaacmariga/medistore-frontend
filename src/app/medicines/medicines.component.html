@@ -25,7 +25,9 @@
 
         <div class="card">
           <div class="card-img-wrapper">
-            <img class="card-img-top" src="{{item.picture}}" alt="Card image cap">
+            <img class="card-img-top" src="https://source.unsplash.com/rJVflgqasr4/1920x2880
+             " alt="
+              Card image cap">
           </div>
           <div class="card-body">
             <h5 class="card-title">{{item.name}}</h5>
@@ -36,15 +38,50 @@
             </ul>
             <div class="card-content">
               <p class="card-text">{{item.description}}</p>
-              <a href="#" class="btn btn-primary">Buy</a>
+              <div class="card-buttons">
+                <a href="#" class="btn btn-primary">Buy</a>
+                <button style="margin-left: 50px" attr.data-target="#{{item.id}}" type="button" class="btn btn-primary"
+                  (click)="openPopup()">Info
+                </button>
+              </div>
             </div>
           </div>
         </div>
         <!-- Test end -->
+        <!-- Button trigger modal -->
+
+        <div class="modal" tabindex="-1" role="dialog" id="{{item.id}}" [ngStyle]="{'display':displayStyle}">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+
+            <div class="modal-content">
+              <button type="button" class="btn btn-danger" (click)="closePopup()">
+                Close
+              </button>
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{item.name}}</h5>
+              </div>
+              <div class="modal-body">
+                <img class="modal-img" src="https://source.unsplash.com/rJVflgqasr4/1920x2880" alt="">
+                <p class="modal-description">{{item.description}}</p>
+              </div>
+              <div class="modal-footer">
+
+                <ul class="prices">
+                  <li><strong> Price:</strong>500</li>
+                  <li><strong> Current:</strong>{{item.price}}</li>
+                  <li><strong> Discount:</strong>200</li>
+                </ul>
+              </div>
+            </div>
+          </div>v>
+        </div>
       </div>
     </div>
   </div>
+
 </body>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
 </html>

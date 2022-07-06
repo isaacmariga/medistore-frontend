@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 export class Medicines {
   constructor(
+    public id: number,
     public name: string,
     public price: number,
     public description: string,
@@ -35,10 +36,15 @@ export class MedicinesComponent implements OnInit {
   onSelectedChanged() {
     // console.log(this.selectedDisease);
   }
+  // selectedMedicine: string = 'Leukimia';
+  // @Output()
+  // selectedChanged: EventEmitter<string> = new EventEmitter<string>();
+  // onSelectedChanged() {
+  //   // console.log(this.selectedDisease);
+  // }
 
   getMedicines() {
     this.selectedChanged.emit(this.selectedDisease);
-    console.log('test');
 
     this.httpClient
       .get<any>(
@@ -46,7 +52,6 @@ export class MedicinesComponent implements OnInit {
           this.selectedDisease
       )
       .subscribe((response) => {
-        console.log('test');
         this.medicines = response;
       });
   }
@@ -57,5 +62,13 @@ export class MedicinesComponent implements OnInit {
         this.diseases = response;
         // console.log(response);
       });
+  }
+  displayStyle = 'none';
+
+  openPopup() {
+    this.displayStyle = 'block';
+  }
+  closePopup() {
+    this.displayStyle = 'none';
   }
 }
