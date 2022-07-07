@@ -13,7 +13,9 @@ import { SingleMedicineComponent } from './single-medicine/single-medicine.compo
 import { MedicineFormComponent } from './medicine-form/medicine-form.component';
 import { ShoppingFormComponent } from './shopping-form/shopping-form.component';
 import { PrescriptionUploadComponent } from './prescription-upload/prescription-upload.component';
-import { CloudinaryComponent } from './cloudinary/cloudinary.component';
+import { DonateFormComponent } from './donate-form/donate-form.component';
+import { DonationComponent } from './donation/donation.component';
+
 
 @NgModule({
   declarations: [
@@ -26,14 +28,17 @@ import { CloudinaryComponent } from './cloudinary/cloudinary.component';
     MedicineFormComponent,
     ShoppingFormComponent,
     PrescriptionUploadComponent,
-    CloudinaryComponent,
+    DonateFormComponent,
+    DonationComponent,
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
