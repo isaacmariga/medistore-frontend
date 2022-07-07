@@ -4,9 +4,10 @@ import { DonationComponent } from './donation/donation.component';
 import { LandingComponent } from './landing/landing.component';
 import { DonateFormComponent } from './donate-form/donate-form.component';
 
+
 const routes: Routes = [
-  { path: 'donation', component: DonationComponent },
-  { path: 'landing',  component:  LandingComponent },
+  { path: 'donate', component: DonationComponent },
+  { path: '',  component:  LandingComponent },
   { path: 'donate-form', component: DonateFormComponent },
 ];
 

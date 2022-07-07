@@ -60,14 +60,14 @@
         <!-- Nav Bar Start -->
         <div class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container-fluid">
-                <a href="index.html" class="navbar-brand">Medistore</a>
+                <a href="/" class="navbar-brand">Medistore</a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="/" class="nav-item nav-link active">Home</a>
                         <a href="/donate-form" class="nav-item nav-link">Donate now</a>
                     </div>
                 </div>
@@ -119,12 +119,18 @@
             </div>
             <div class="col-lg-5">
                 <div class="donate-form">
-                    <form>
-                        <div class="control-group">
-                            <input type="text" class="form-control" placeholder="Name" required="required" />
+                    <form novalidate [formGroup]="myForm" #testForm="ngForm" (ngSubmit)="getText(testForm.value)">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Name" required="required" formControlName="name" />
                         </div>
-                        <div class="control-group">
-                            <input type="email" class="form-control" placeholder="Email" required="required" />
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email" required="required" formControlName="email" />
+                        </div>
+                        <div class="form-group">
+                            <input type="number " class="form-control" placeholder="Phone number" required="required" formControlName="phoneNumber"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" placeholder="amount" required="required" formControlName="amount" />
                         </div>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-custom active">
@@ -137,6 +143,7 @@
                                 <input type="radio" name="options"> $30
                             </label>
                         </div>
+                        <pre>{{myForm.value | json}}</pre>
                         <div>
                             <button class="btn btn-custom" type="submit">Donate Now</button>
                         </div>
