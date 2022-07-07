@@ -27,17 +27,17 @@ export class ShoppingFormComponent implements OnInit {
   myForm: FormGroup;
   medicines: Medicines;
 
-  id = '';
+  name = '';
   currentRoute: string;
 
   constructor(private httpClient: HttpClient, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.getMedicines();
-    this.id = this.route.snapshot.params.id;
+    this.name = this.route.snapshot.params.name;
 
     this.myForm = new FormGroup({
-      medicine: new FormControl(this.id),
+      medicine: new FormControl(this.name),
       units: new FormControl('', Validators.required),
       buyer: new FormControl('', Validators.required),
       disease: new FormControl(),
@@ -55,11 +55,11 @@ export class ShoppingFormComponent implements OnInit {
       .then((data) => {});
   }
   getMedicines() {
-    this.id = this.route.snapshot.params.id;
-    console.log(this.id);
+    this.name = this.route.snapshot.params.name;
+    console.log(this.name);
     this.httpClient
       .get<any>(
-        'https://medistore-apis.herokuapp.com/api/medicine-id/' + this.id
+        'https://medistore-apis.herokuapp.com/api/medicine-id/' + this.name
       )
       .subscribe((response) => {
         this.medicines = response;

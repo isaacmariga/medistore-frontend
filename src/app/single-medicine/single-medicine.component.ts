@@ -21,7 +21,7 @@ export class Medicines {
 export class SingleMedicineComponent implements OnInit {
   medicine: Medicines;
   name = '';
-  id = '';
+  id_no = '';
   currentRoute: string;
 
   constructor(
@@ -35,11 +35,11 @@ export class SingleMedicineComponent implements OnInit {
   }
 
   getMedicines() {
-    this.id = this.route.snapshot.params.id;
-    console.log(this.id);
+    this.id_no = this.route.snapshot.params.id_no;
+    console.log(this.id_no);
     this.httpClient
       .get<any>(
-        'https://medistore-apis.herokuapp.com/api/medicine-id/' + this.id
+        'https://medistore-apis.herokuapp.com/api/medicine-id/' + this.id_no
       )
       .subscribe((response) => {
         this.medicine = response;
