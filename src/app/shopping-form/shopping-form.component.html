@@ -1,8 +1,9 @@
 <div class="container">
   <form novalidate [formGroup]="myForm" #testForm="ngForm" (ngSubmit)="getText(testForm.value)">
     <div class=" form-group">
-      <label>Medicine</label>
-      <input type="number" class="form-control" formControlName="medicine">
+      <label>Medicine{{medicines.name}}</label>
+      <input type="number" readonly class="form-control" value="{{medicines.id}}" placeholder="{{medicines.name}}"
+        formControlName="medicine">
     </div>
     <label>Number</label>
     <input type="number" class="form-control" formControlName="units">

@@ -5,6 +5,7 @@ export class Medicines {
     public id: number,
     public name: string,
     public price: number,
+    public units: number,
     public description: string,
     public picture: string
   ) {}
@@ -22,7 +23,7 @@ export class Diseases {
 export class MedicinesComponent implements OnInit {
   medicines: Medicines[];
   diseases: Diseases[];
-
+  cloud: string = 'https://res.cloudinary.com/dtj7bnapz/';
   constructor(private httpClient: HttpClient) {}
 
   ngOnInit(): void {

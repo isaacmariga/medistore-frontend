@@ -73,7 +73,7 @@ li {
   position: relative;
   overflow: hidden;
   min-height: 100px;
-  max-height: 410px;
+  max-height: 470px;
 }
 .card:hover {
   box-shadow: 8px 12px 31px -10px #ab98ab;

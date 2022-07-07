@@ -25,6 +25,7 @@ export class MedicineFormComponent implements OnInit {
       name: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
+      picture: new FormControl('', Validators.required),
       disease: new FormControl(),
     });
   }
