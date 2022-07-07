@@ -15,7 +15,7 @@ import { ShoppingFormComponent } from './shopping-form/shopping-form.component';
 import { PrescriptionUploadComponent } from './prescription-upload/prescription-upload.component';
 import { DonateFormComponent } from './donate-form/donate-form.component';
 import { DonationComponent } from './donation/donation.component';
-
+import { Landing2Component } from './landing2/landing2.component';
 
 @NgModule({
   declarations: [
@@ -30,15 +30,14 @@ import { DonationComponent } from './donation/donation.component';
     PrescriptionUploadComponent,
     DonateFormComponent,
     DonationComponent,
-
-
+    Landing2Component,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

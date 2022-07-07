@@ -14,16 +14,13 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-donation',
   templateUrl: './donation.component.html',
-  styleUrls: ['./donation.component.css']
+  styleUrls: ['./donation.component.css'],
 })
 export class DonationComponent implements OnInit {
-
-  langs: number[] = [1, 2, 3, 4, 5];
-
   myForm: FormGroup;
 
   constructor(private http: HttpClient) {}
-  
+
   ngOnInit(): void {
     this.myForm = new FormGroup({
       name: new FormControl('', Validators.required),
@@ -32,7 +29,7 @@ export class DonationComponent implements OnInit {
       amount: new FormControl('', Validators.required),
     });
   }
-  
+
   url = 'https://medistore-apis.herokuapp.com/api/donation';
   getText(data: any) {
     if (this.myForm.valid) {
@@ -42,7 +39,5 @@ export class DonationComponent implements OnInit {
       .post(this.url, data)
       .toPromise()
       .then((data) => {});
-
   }
-
 }
