@@ -20,26 +20,30 @@
     </div>
 
     <div class="medicines">
-
       <div class="item" *ngFor="let item of medicines">
 
         <div class="card">
           <div class="card-img-wrapper">
-            <img class="card-img-top" src="https://source.unsplash.com/rJVflgqasr4/1920x2880
-             " alt="
+            <img class="card-img-top" src="{{cloud}}{{item.picture}}" alt="
               Card image cap">
           </div>
           <div class="card-body">
-            <h5 class="card-title">{{item.name}}</h5>
+            <div class="card-title">
+              <h5>{{item.name}}</h5>
+              <h6>{{item.price}} Kes <br>({{item.units}} units left)</h6>
+              <p class="card-text">{{item.description}}</p>
+
+            </div>
+            <hr>
             <ul class="prices">
-              <li><strong> Price:</strong>500</li>
-              <li><strong> Current:</strong>{{item.price}}</li>
+              <li><s><strong> Original Price:</strong>500/</s></li>
               <li><strong> Discount:</strong>200</li>
             </ul>
+            <hr>
+
             <div class="card-content">
-              <p class="card-text">{{item.description}}</p>
               <div class="card-buttons">
-                <a href="/single/{{item.id}}" class="btn btn-primary">Buy</a>
+                <a href="shopping-form/medicine/{{item.id}}" class="btn btn-primary">Buy</a>
                 <button style="margin-left: 50px" attr.data-target="#{{item.id}}" type="button" class="btn btn-primary"
                   (click)="openPopup()">Info
                 </button>

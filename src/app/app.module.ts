@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SingleMedicineComponent } from './single-medicine/single-medicine.component';
 import { MedicineFormComponent } from './medicine-form/medicine-form.component';
 import { ShoppingFormComponent } from './shopping-form/shopping-form.component';
+import { PrescriptionUploadComponent } from './prescription-upload/prescription-upload.component';
+import { CloudinaryComponent } from './cloudinary/cloudinary.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { ShoppingFormComponent } from './shopping-form/shopping-form.component';
     SingleMedicineComponent,
     MedicineFormComponent,
     ShoppingFormComponent,
+    PrescriptionUploadComponent,
+    CloudinaryComponent,
   ],
   imports: [
     BrowserModule,

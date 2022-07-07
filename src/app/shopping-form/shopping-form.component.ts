@@ -7,7 +7,17 @@ import {
 } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
+export class Medicines {
+  constructor(
+    public id: number,
+    public name: string,
+    public price: number,
+    public description: string,
+    public picture: string
+  ) {}
+}
 @Component({
   selector: 'app-shopping-form',
   templateUrl: './shopping-form.component.html',
@@ -15,12 +25,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ShoppingFormComponent implements OnInit {
   myForm: FormGroup;
+  medicines: Medicines;
 
-  constructor(private http: HttpClient) {}
+  id = '';
+  currentRoute: string;
+
+  constructor(private httpClient: HttpClient, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.getMedicines();
+    this.id = this.route.snapshot.params.id;
+
     this.myForm = new FormGroup({
-      medicine: new FormControl('', Validators.required),
+      medicine: new FormControl(this.id),
       units: new FormControl('', Validators.required),
       buyer: new FormControl('', Validators.required),
       disease: new FormControl(),
@@ -32,9 +49,20 @@ export class ShoppingFormComponent implements OnInit {
     if (this.myForm.valid) {
       this.myForm.reset();
     }
-    this.http
+    this.httpClient
       .post(this.url, data)
       .toPromise()
       .then((data) => {});
+  }
+  getMedicines() {
+    this.id = this.route.snapshot.params.id;
+    console.log(this.id);
+    this.httpClient
+      .get<any>(
+        'https://medistore-apis.herokuapp.com/api/medicine-id/' + this.id
+      )
+      .subscribe((response) => {
+        this.medicines = response;
+      });
   }
 }

@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'main', component: MainComponent },
   { path: 'single/:id', component: SingleMedicineComponent },
   { path: 'medicine-form', component: MedicineFormComponent },
-  { path: 'shopping-form', component: ShoppingFormComponent },
+  { path: 'shopping-form/medicine/:id', component: ShoppingFormComponent },
 ];
 
 @NgModule({
