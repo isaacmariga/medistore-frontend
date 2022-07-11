@@ -8,8 +8,9 @@ import { MedicineFormComponent } from './medicine-form/medicine-form.component';
 import { ShoppingFormComponent } from './shopping-form/shopping-form.component';
 import { DonateFormComponent } from './donate-form/donate-form.component';
 import { DonationComponent } from './donation/donation.component';
-
-
+import { UnitFormComponent } from './unit-form/unit-form.component';
+import { DonatingThanksComponent } from './donating-thanks/donating-thanks.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -18,10 +19,11 @@ const routes: Routes = [
   { path: 'single/:id', component: SingleMedicineComponent },
   { path: 'medicine-form', component: MedicineFormComponent },
   { path: 'shopping-form/medicine/:id', component: ShoppingFormComponent },
-  { path: 'donate-form', component: DonateFormComponent },
-  { path: 'donation', component: DonationComponent },
-
-
+  { path: 'unit-form/medicine/:id', component: UnitFormComponent },
+  { path: 'donate', component: DonateFormComponent },
+  { path: 'donation-form/:id', component: DonationComponent },
+  { path: 'donation-thanks', component: DonatingThanksComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

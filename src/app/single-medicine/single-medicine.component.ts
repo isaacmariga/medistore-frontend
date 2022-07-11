@@ -13,6 +13,13 @@ export class Medicines {
   ) {}
 }
 
+export class unitsRemaining {
+  constructor(public units_calculated: number) {}
+}
+export class currentPrice {
+  constructor(public discounted_price: number) {}
+}
+
 @Component({
   selector: 'app-single-medicine',
   templateUrl: './single-medicine.component.html',
@@ -21,8 +28,10 @@ export class Medicines {
 export class SingleMedicineComponent implements OnInit {
   medicine: Medicines;
   name = '';
-  id_no = '';
+  id = '';
   currentRoute: string;
+  units_remaining: unitsRemaining;
+  current_price: currentPrice;
 
   constructor(
     private httpClient: HttpClient,
@@ -32,17 +41,43 @@ export class SingleMedicineComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMedicines();
+    this.getUnitsRemaining();
+    this.getCurrentPrice();
   }
 
   getMedicines() {
-    this.id_no = this.route.snapshot.params.id_no;
-    console.log(this.id_no);
+    this.id = this.route.snapshot.params.id;
+    console.log(this.id);
     this.httpClient
       .get<any>(
-        'https://medistore-apis.herokuapp.com/api/medicine-id/' + this.id_no
+        'https://medistore-apis.herokuapp.com/api/medicine-id/' + this.id
       )
       .subscribe((response) => {
         this.medicine = response;
+      });
+  }
+  getUnitsRemaining() {
+    this.id = this.route.snapshot.params.id;
+    console.log(this.id);
+    this.httpClient
+      .get<any>(
+        'https://medistore-apis.herokuapp.com/api/units_remaining/' + this.id
+      )
+      .subscribe((response) => {
+        this.units_remaining = response;
+        console.log(response);
+      });
+  }
+  getCurrentPrice() {
+    this.id = this.route.snapshot.params.id;
+    console.log(this.id);
+    this.httpClient
+      .get<any>(
+        'https://medistore-apis.herokuapp.com/api/discounted_price/' + this.id
+      )
+      .subscribe((response) => {
+        this.current_price = response;
+        console.log(response);
       });
   }
 }

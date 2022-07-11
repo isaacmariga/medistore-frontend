@@ -15,21 +15,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MedicineFormComponent implements OnInit {
   langs: string[] = ['Leukimia', 'Teams', 'Wendover'];
+  data = [];
 
-  myForm: FormGroup;
-
+  myForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+    picture: new FormControl('', Validators.required),
+    disease: new FormControl(),
+  });
   constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {
-    this.myForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      price: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
-      picture: new FormControl('', Validators.required),
-      disease: new FormControl(),
-    });
-  }
+  ngOnInit(): void {}
   url = 'https://medistore-apis.herokuapp.com/api/medicines/';
+  url2 = 'https://medistore-apis.herokuapp.com/api/calculation_units/';
 
   getText(data: any) {
     if (this.myForm.valid) {
@@ -39,5 +37,10 @@ export class MedicineFormComponent implements OnInit {
       .post(this.url, data)
       .toPromise()
       .then((data) => {});
+    this.http
+      .post(this.url2, data)
+      .toPromise()
+      .then((data) => {});
+    console.log(data);
   }
 }

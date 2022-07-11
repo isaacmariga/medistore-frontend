@@ -9,50 +9,15 @@
 </head>
 
 <body>
-  <!-- Navbar -->
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" routerLink="medicines" href="#">Medicines</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link" routerLink="medicines" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Medicines
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/medicine-form">New Medicine</a>
-        </li>
-      </ul>
-      <a type="button" class="btn btn-success" href="/donation" style="margin-right: 30px; margin-left:30px;">Donate</a>
-    </div>
-
-  </nav>
 
   <div class="containers">
+
     <div class="diseases">
       <div *ngFor="let disease of diseases">
         <input type="radio" class="diseases" value="{{disease.name}}" [(ngModel)]="selectedDisease"
-          (change)="getMedicines()" class="btn-check" name="options" id="{{disease.name}}" autocomplete="off">
-        <label class="btn btn-secondary diseases-btn" for="{{disease.name}}">{{disease.name}}</label>
+          (change)="getMedicines()" class="btn-check " name="options" id="{{disease.name}}" autocomplete="off">
+        <label class="btn btn-warning diseases-btn" for="{{disease.name}}">{{disease.name}}</label>
       </div>
     </div>
 
@@ -67,7 +32,6 @@
           <div class="card-body">
             <div class="card-title">
               <h5>{{item.name}}</h5>
-              <h6>{{item.price}} Kes <br>({{item.units}} units left)</h6>
               <p class="card-text">{{item.description}}</p>
 
             </div>
@@ -80,7 +44,10 @@
 
             <div class="card-content">
               <div class="card-buttons">
-                <a href="shopping-form/medicine/{{item.id}}" class="btn btn-primary">Buy</a>
+                <a href="https://medistore-apis.herokuapp.com/prescription/{{item.id}} " class="btn btn-primary">Buy</a>
+                <a href="unit-form/medicine/{{item.id}}" class="btn btn-primary">Update units</a>
+                <a href="shopping-form/medicine/{{item.id}}" class="btn btn-primary">Buy test</a>
+                <a href="/single/{{item.id}}" class="btn btn-primary">Info Page</a>
                 <button style="margin-left: 50px" attr.data-target="#{{item.id}}" type="button" class="btn btn-primary"
                   (click)="openPopup()">Info
                 </button>
@@ -109,7 +76,7 @@
 
                 <ul class="prices">
                   <li><strong> Price:</strong>500</li>
-                  <li><strong> Current:</strong>{{item.price}}</li>
+                  <li><strong> Current:</strong>400</li>
                   <li><strong> Discount:</strong>200</li>
                 </ul>
               </div>
