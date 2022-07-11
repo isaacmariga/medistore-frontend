@@ -16,6 +16,13 @@ import { PrescriptionUploadComponent } from './prescription-upload/prescription-
 import { DonateFormComponent } from './donate-form/donate-form.component';
 import { DonationComponent } from './donation/donation.component';
 import { Landing2Component } from './landing2/landing2.component';
+import { UnitFormComponent } from './unit-form/unit-form.component';
+import { RouterModule } from '@angular/router';
+import { DonatingThanksComponent } from './donating-thanks/donating-thanks.component';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
+import { RoundProgressModule } from 'angular-svg-round-progressbar';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -31,6 +38,9 @@ import { Landing2Component } from './landing2/landing2.component';
     DonateFormComponent,
     DonationComponent,
     Landing2Component,
+    UnitFormComponent,
+    DonatingThanksComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +48,10 @@ import { Landing2Component } from './landing2/landing2.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RouterModule,
+    LoadingBarModule,
+    RoundProgressModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

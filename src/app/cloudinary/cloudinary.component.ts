@@ -1,13 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FileUploader, FileUploaderOptions, ParsedResponseHeaders } from 'ng2-file-upload';
+import { Component, OnInit, Input, NgZone } from '@angular/core';
+import {
+  FileUploader,
+  FileUploaderOptions,
+  ParsedResponseHeaders,
+} from 'ng2-file-upload';
 import { Cloudinary } from '@cloudinary/angular-5.x';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-list',
-  templateUrl: 'app.component.html'
+  templateUrl: 'cloudinary.component.html',
 })
 export class ImageUploadComponent implements OnInit {
-
   @Input()
   responses: Array<any>;
 
@@ -27,7 +31,9 @@ export class ImageUploadComponent implements OnInit {
   ngOnInit(): void {
     // Create the file uploader, wire it to upload to your account
     const uploaderOptions: FileUploaderOptions = {
-      url: `https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/upload`,
+      url: `https://api.cloudinary.com/v1_1/${
+        this.cloudinary.config().cloud_name
+      }/upload`,
       // Upload files automatically upon addition to upload queue
       autoUpload: true,
       // Use xhrTransport in favor of iframeTransport
@@ -38,9 +44,9 @@ export class ImageUploadComponent implements OnInit {
       headers: [
         {
           name: 'X-Requested-With',
-          value: 'XMLHttpRequest'
-        }
-      ]
+          value: 'XMLHttpRequest',
+        },
+      ],
     };
 
     this.uploader = new FileUploader(uploaderOptions);
@@ -48,7 +54,7 @@ export class ImageUploadComponent implements OnInit {
     this.uploader.onBuildItemForm = (fileItem: any, form: FormData): any => {
       // Add Cloudinary unsigned upload preset to the upload form
       form.append('upload_preset', this.cloudinary.config().upload_preset);
-      
+
       // Add file to upload
       form.append('file', fileItem);
 
@@ -57,9 +63,9 @@ export class ImageUploadComponent implements OnInit {
       return { fileItem, form };
     };
 
-
-  fileOverBase(e: any): void {
-    this.hasBaseDropZoneOver = e;
+    // fileOverBase(e: any): void {
+    //   this.hasBaseDropZoneOver = e;
+    //   _upload.component.ts_
+    // }
   }
 }
-_upload.component.ts_

@@ -1,3 +1,7 @@
+body {
+  background-color: black;
+  height: 100vh;
+}
 .containers {
   margin: 5%;
   display: grid;
@@ -13,22 +17,12 @@
     place-items: center;
   }
 }
-/* body {
-  padding-top: 100px;
-  background-color: rgba(0, 0, 0, 0.311);
-}
 
-@media only screen and (max-width: 992px) {
-  body {
-    padding-top: 50px;
-  }
-} */
 .medicines {
   display: grid;
   gap: 2rem;
 
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  /* grid-template-columns: 1fr 1fr; */
 }
 
 li {

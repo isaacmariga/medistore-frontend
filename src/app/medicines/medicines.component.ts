@@ -1,11 +1,11 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 export class Medicines {
   constructor(
     public id: number,
     public name: string,
-    public price: number,
-    public units: number,
     public description: string,
     public picture: string
   ) {}
@@ -24,25 +24,31 @@ export class MedicinesComponent implements OnInit {
   medicines: Medicines[];
   diseases: Diseases[];
   cloud: string = 'https://res.cloudinary.com/dtj7bnapz/';
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit(): void {
     this.getMedicines();
     this.getDiseases();
+
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 2000);
+  }
+  showSpinner() {
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 3000);
   }
 
   selectedDisease: string = 'Leukimia';
   @Output()
   selectedChanged: EventEmitter<string> = new EventEmitter<string>();
-  onSelectedChanged() {
-    // console.log(this.selectedDisease);
-  }
-  // selectedMedicine: string = 'Leukimia';
-  // @Output()
-  // selectedChanged: EventEmitter<string> = new EventEmitter<string>();
-  // onSelectedChanged() {
-  //   // console.log(this.selectedDisease);
-  // }
+  onSelectedChanged() {}
 
   getMedicines() {
     this.selectedChanged.emit(this.selectedDisease);

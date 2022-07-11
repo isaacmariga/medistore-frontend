@@ -1,24 +1,16 @@
-.background {
-  color: rgb(255, 255, 255);
-  background-color: black;
-}
-.jumbotron {
-  background-image: url("https://images.unsplash.com/photo-1657037030554-ab3410b8820c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzOXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60");
-  opacity: 0.8;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 80vh;
-  width: 100vw;
+body {
   display: grid;
   place-content: center;
   text-align: center;
+  height: 90vh;
+  color: #ffc60a;
+}
+a {
+  text-decoration: none;
+  color: #000;
 }
 
-.container {
-  opacity: 1;
-}
-
-.btn.btn-custom {
+.btn {
   margin: 30px;
   padding: 12px 20px;
   text-align: center;
@@ -33,7 +25,7 @@
   -moz-transition: ease-out 0.3s;
 }
 
-.btn.btn-custom:hover {
+.btn:hover {
   color: #20212b;
   box-shadow: inset 0 0 0 30px #fdbe33;
 }
