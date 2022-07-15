@@ -38,26 +38,23 @@
         <form class="contact-form row" novalidate [formGroup]="myForm" #testForm="ngForm"
             (ngSubmit)="getText(testForm.value)">
             <div class="form-field col-lg-6">
+                <div *ngIf="myForm.controls.donation_amount.invalid ">Kindly input the donation amount</div>
                 <input id="name" class="input-text js-input" type="text" required formControlName="donation_amount">
                 <label class="label" for="name">Donation amount</label>
             </div>
             <div class="form-field col-lg-6 ">
+                <div style="color: red;" *ngIf="myForm.controls.email.invalid && myForm.controls.email.dirty">Kindly
+                    input your email</div>
                 <input id="email" class="input-text js-input" type="email" required formControlName="email">
                 <label class="label" for="email">E-mail</label>
             </div>
             <div class="form-field col-lg-6 ">
+                <div style="color: red;"
+                    *ngIf="myForm.controls.phone_number.invalid && myForm.controls.phone_number.dirty">Kindly input your
+                    phone number</div>
                 <input id="company" class="input-text js-input" type="text" required formControlName="phone_number">
                 <label class="label" for="company">Phone Number</label>
             </div>
-            <div class="form-group" class="form-field col-lg-6 ">
-                <select class="form-control" class="input-text js-input" formControlName="donor">
-                    <option value="">Would you like to be recorded or ananymous</option>
-                    <option *ngFor="let don of donors" [value]=don>{{don }}
-                    </option>
-                </select>
-                <label class="label" for="phone">Donor</label>
-            </div>
-
             <div class="form-field col-lg-12">
                 <input class="submit-btn" type="submit" href="/" value="Submit">
             </div>

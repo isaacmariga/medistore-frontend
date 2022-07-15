@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 export class Diseases {
-  constructor(public name: string, public id: number) {}
+  constructor(public name: string, public id: number, public picture: string) {}
 }
 
 @Component({
@@ -12,6 +12,7 @@ export class Diseases {
 export class DonateFormComponent implements OnInit {
   diseases: Diseases[];
   constructor(private httpClient: HttpClient) {}
+  cloud: string = 'https://res.cloudinary.com/dtj7bnapz/';
 
   ngOnInit(): void {
     this.getDiseases();

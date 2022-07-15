@@ -16,6 +16,7 @@ import { HttpClient } from '@angular/common/http';
 export class MedicineFormComponent implements OnInit {
   langs: string[] = ['Leukimia', 'Teams', 'Wendover'];
   data = [];
+  alert: boolean = false;
 
   myForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -32,6 +33,7 @@ export class MedicineFormComponent implements OnInit {
   getText(data: any) {
     if (this.myForm.valid) {
       this.myForm.reset();
+      this.alert = true;
     }
     this.http
       .post(this.url, data)

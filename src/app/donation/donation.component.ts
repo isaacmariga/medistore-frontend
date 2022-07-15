@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { User } from '../auth/auth.model';
+import { AuthService } from '../auth/auth.service';
 
 import {
   FormGroup,
@@ -32,35 +35,41 @@ export class Diseases {
 })
 export class DonationComponent implements OnInit {
   donors: string[] = ['2', 'Anonymous'];
-
+  user: User;
+  userSub: Subscription;
   diseases: Diseases;
   id = '';
 
   calc: Calc;
-
-  myForm = new FormGroup({
-    donation_amount: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
-    phone_number: new FormControl('', Validators.required),
-    disease_id: new FormControl(),
-    disease: new FormControl(this.id),
-    donor: new FormControl(),
-    units_sold: new FormControl(0),
-    units: new FormControl(0),
-    set_price: new FormControl(),
-    medicine_id: new FormControl(1),
-  });
+  myForm: FormGroup;
 
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
     this.getCalc();
     this.getDiseases();
     this.id = this.route.snapshot.params.id;
+
+    this.userSub = this.authService.user.subscribe((data: User) => {
+      this.user = data;
+    });
+    this.myForm = new FormGroup({
+      donation_amount: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      phone_number: new FormControl('', Validators.required),
+      disease_id: new FormControl(),
+      disease: new FormControl(this.id),
+      donor: new FormControl(this.user.id),
+      units_sold: new FormControl(0),
+      units: new FormControl(0),
+      set_price: new FormControl(),
+      medicine_id: new FormControl(1),
+    });
   }
 
   getDiseases() {

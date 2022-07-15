@@ -39,7 +39,7 @@ export class UnitFormComponent implements OnInit {
   langs: string[] = ['1'];
   data = [];
   calc: Calc;
-
+  alert: boolean = false;
   id = '';
   medicines: Medicines;
 
@@ -78,6 +78,7 @@ export class UnitFormComponent implements OnInit {
   getText(data: any) {
     if (this.myForm.valid) {
       this.myForm.reset();
+      this.alert = true;
     }
     this.http
       .post(this.url, data)

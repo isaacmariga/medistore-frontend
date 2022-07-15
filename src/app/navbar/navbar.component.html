@@ -13,9 +13,8 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0">
       <div class="container">
-        <a class="navbar-brand" href="#!"><span style="color: #5e9693;">Psycho</span><span
-            style="color: #fff;">logist</span></a>
-        <a class="navbar-brand" routerLink="medicines" href="#!"><span style="color: #5e9693;">Medicines</span></a>
+        <a class="navbar-brand" href="/"><span style="color: #fdbe33;">Medistore</span></a>
+        <a routerLink="medicines" href="/medicines"><span style="color: #fdbe33;">Medicines</span></a>
         <button class="navbar-toggler" data-bs-toggle="dropdown" type="button" data-mdb-toggle="collapse"
           data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
           aria-label="Toggle navigation">
@@ -24,26 +23,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#!">Offer</a>
+              <a class="nav-link" href="https://medistore-apis.herokuapp.com/medicine_upload">New Medicine</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#!">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#!">Portfolio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#!">Reference</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#!">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#!">Team</a>
+              <a class="nav-link" href="/donate">Donation</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#!">Contact</a>
             </li>
+            <ul class="nav navbar-nav navbar-right">
+              <li routerLinkActive><a style="cursor: pointer;" routerLink="/auth" *ngIf="!isAuthenticated">Login</a>
+              </li>
+              <li style="cursor: pointer;" *ngIf="isAuthenticated" (click)="onLogout()"><a>Logout</a></li>
+            </ul>
           </ul>
           <ul class="navbar-nav d-flex flex-row">
             <li class="nav-item me-3 me-lg-0">

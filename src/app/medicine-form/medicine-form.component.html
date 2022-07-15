@@ -1,13 +1,25 @@
 <div class="container">
+
   <form novalidate [formGroup]="myForm" #testForm="ngForm" (ngSubmit)="getText(testForm.value)">
     <div class=" form-group">
+      <div *ngIf="myForm.controls.name.invalid ">Kindly input the name of the medicine</div>
+
       <label>Name</label>
       <input type="text" class="form-control" formControlName="name">
     </div>
+    <div style="color: red;" *ngIf="myForm.controls.name.invalid && myForm.controls.name.dirty">Kindly input
+      the description</div>
+
     <label>description</label>
     <input type="text" class="form-control" formControlName="description">
+    <div style="color: red;" *ngIf="myForm.controls.description.invalid && myForm.controls.description.dirty">Kindly
+      input a picture of the medicine</div>
+
     <label>picture</label>
     <input type="file" class="form-control" formControlName="picture">
+    <div style="color: red;" *ngIf="myForm.controls.picture.invalid && myForm.controls.picture.dirty">Kindly input the
+      disease</div>
+
     <div class="form-group">
       <label>disease</label>
       <select class="form-control" formControlName="disease">

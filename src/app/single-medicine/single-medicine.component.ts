@@ -19,6 +19,9 @@ export class unitsRemaining {
 export class currentPrice {
   constructor(public discounted_price: number) {}
 }
+export class setPrice {
+  constructor(public set_price: number) {}
+}
 
 @Component({
   selector: 'app-single-medicine',
@@ -29,9 +32,12 @@ export class SingleMedicineComponent implements OnInit {
   medicine: Medicines;
   name = '';
   id = '';
+  discount: number;
   currentRoute: string;
   units_remaining: unitsRemaining;
   current_price: currentPrice;
+  set_price: setPrice;
+  cloud: string = 'https://res.cloudinary.com/dtj7bnapz/';
 
   constructor(
     private httpClient: HttpClient,
@@ -43,6 +49,7 @@ export class SingleMedicineComponent implements OnInit {
     this.getMedicines();
     this.getUnitsRemaining();
     this.getCurrentPrice();
+    this.getSetPrice();
   }
 
   getMedicines() {
@@ -65,7 +72,6 @@ export class SingleMedicineComponent implements OnInit {
       )
       .subscribe((response) => {
         this.units_remaining = response;
-        console.log(response);
       });
   }
   getCurrentPrice() {
@@ -77,7 +83,19 @@ export class SingleMedicineComponent implements OnInit {
       )
       .subscribe((response) => {
         this.current_price = response;
-        console.log(response);
+      });
+  }
+
+  getSetPrice() {
+    this.id = this.route.snapshot.params.id;
+    console.log(this.id);
+    this.httpClient
+      .get<any>(
+        'https://medistore-apis.herokuapp.com/api/latest_units_medicine/' +
+          this.id
+      )
+      .subscribe((response) => {
+        this.set_price = response;
       });
   }
 }
