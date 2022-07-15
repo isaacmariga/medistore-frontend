@@ -1,6 +1,13 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
+import {
+  FormGroup,
+  FormBuilder,
+  FormArray,
+  FormControl,
+  Validators,
+} from '@angular/forms';
 
 export class Medicines {
   constructor(
@@ -24,6 +31,10 @@ export class MedicinesComponent implements OnInit {
   medicines: Medicines[];
   diseases: Diseases[];
   cloud: string = 'https://res.cloudinary.com/dtj7bnapz/';
+  name = 'Angular';
+  searchText = '';
+  data: any;
+
   constructor(
     private httpClient: HttpClient,
     private spinner: NgxSpinnerService
@@ -52,7 +63,6 @@ export class MedicinesComponent implements OnInit {
 
   getMedicines() {
     this.selectedChanged.emit(this.selectedDisease);
-
     this.httpClient
       .get<any>(
         'https://medistore-apis.herokuapp.com/api/medicine/' +
@@ -60,6 +70,7 @@ export class MedicinesComponent implements OnInit {
       )
       .subscribe((response) => {
         this.medicines = response;
+        this.data = response;
       });
   }
   getDiseases() {

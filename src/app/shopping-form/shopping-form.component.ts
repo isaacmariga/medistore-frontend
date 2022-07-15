@@ -8,6 +8,9 @@ import {
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { User } from '../auth/auth.model';
+import { AuthService } from '../auth/auth.service';
+import { Subscription } from 'rxjs';
 
 export class Medicines {
   constructor(
@@ -19,6 +22,15 @@ export class Medicines {
   ) {}
 }
 
+export class Sales {
+  constructor(
+    public units_sold: number,
+    public buyer: number,
+    public medicine: number,
+    public email: string,
+    public delivery_location: string
+  ) {}
+}
 export class Calc {
   constructor(
     public units_sold: Number,
@@ -45,15 +57,22 @@ export class currentPrice {
 export class ShoppingFormComponent implements OnInit {
   medicines: Medicines;
   calc: Calc;
+  alert: boolean = false;
 
   id = '';
   currentRoute: string;
   units_remaining: unitsRemaining;
   current_price: currentPrice;
+  sales = Sales;
+  user: User;
+  userSub: Subscription;
+
   myForm = new FormGroup({
     medicine: new FormControl(this.id),
     units_sold: new FormControl('', Validators.required),
-    buyer: new FormControl('', Validators.required),
+    buyer: new FormControl(''),
+    phone_number: new FormControl('', Validators.required),
+    delivery_location: new FormControl('', Validators.required),
     units: new FormControl(0),
     donation_amount: new FormControl(0),
     set_price: new FormControl(),
@@ -61,7 +80,11 @@ export class ShoppingFormComponent implements OnInit {
     medicine_id: new FormControl(),
   });
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {}
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.getMedicines();
@@ -70,6 +93,9 @@ export class ShoppingFormComponent implements OnInit {
     this.getCurrentPrice();
 
     this.id = this.route.snapshot.params.id;
+    this.userSub = this.authService.user.subscribe((data: User) => {
+      this.user = data;
+    });
   }
   url = 'https://medistore-apis.herokuapp.com/api/purchase/';
   url2 = 'https://medistore-apis.herokuapp.com/api/calculation_units/';
@@ -77,6 +103,7 @@ export class ShoppingFormComponent implements OnInit {
   getText(data: any) {
     if (this.myForm.valid) {
       this.myForm.reset();
+      this.alert = true;
     }
     this.http
       .post(this.url, data)

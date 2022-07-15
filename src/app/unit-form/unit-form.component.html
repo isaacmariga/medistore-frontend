@@ -27,19 +27,26 @@
       est dolore iste assumenda. Dignissimos facere obcaecati deleniti corrupti commodi reiciendis maxime?</p>
   </section>
   <section class="get-in-touch">
-    <h1 class="title">Thank you for your donation</h1>
+    <h3>Medicine: {{medicines.name}}</h3>
+    <div *ngIf="alert" class="alert alert-success" role="alert">
+      Congratulations!<br> You have successfully submitted the form
+    </div>
+
     <form class="contact-form row" novalidate [formGroup]="myForm" #testForm="ngForm"
       (ngSubmit)="getText(testForm.value)">
-      <div class="form-field col-lg-6">
-        <input id="name" class="input-text js-input" type="text" required placeholder="{{medicines.id}}"
-          formControlName="medicine">
-        <label class="label" for="name">Medicine</label>
-      </div>
+
       <div class="form-field col-lg-6 ">
+        <div style="color: red;" *ngIf="myForm.controls.units.invalid && myForm.controls.units.dirty">Kindly input the
+          number of units you are adding
+        </div>
+
         <input id="email" class="input-text js-input" type="number" required formControlName="units">
         <label class="label" for="email">Units Available</label>
       </div>
       <div class="form-field col-lg-6 ">
+        <div style="color: red;" *ngIf="myForm.controls.set_price.invalid && myForm.controls.set_price.dirty">Kindly
+          input the current base price</div>
+
         <input id="company" class="input-text js-input" type="number" required formControlName="set_price">
         <label class="label" for="company">Set Price</label>
       </div>
@@ -47,7 +54,6 @@
       <div class="form-field col-lg-12">
         <input class="submit-btn" type="submit" value="Submit">
       </div>
-      <pre>{{myForm.value | json}}</pre>
 
     </form>
   </section>

@@ -15,17 +15,33 @@
       est dolore iste assumenda. Dignissimos facere obcaecati deleniti corrupti commodi reiciendis maxime?</p>
   </section>
   <section class="get-in-touch">
-    <h1 class="title">Thank you for your purchase</h1>
+    <div *ngIf="alert" class="alert alert-success" role="alert">
+      Congratulations!<br> You have successfully submitted the form
+    </div>
     <form class="contact-form row" novalidate [formGroup]="myForm" #testForm="ngForm"
       (ngSubmit)="getText(testForm.value)">
       <div class="form-field col-lg-6">
-        <input id="name" class="input-text js-input" type="number" required placeholder="{{medicines.name}}"
-          value="{{medicines.id}}" readonly formControlName="medicine">
-        <label class="label" for="name">Medicine</label>
+        <div style="color: red;" *ngIf="myForm.controls.units_sold.invalid && myForm.controls.units_sold.dirty">Kindly
+          input the units purchased</div>
+
+        <input id="units" class="input-text js-input" type="number" required formControlName="units_sold">
+        <label class="label" for="units">Units</label>
       </div>
-      <div class="form-field col-lg-6 ">
-        <input id="email" class="input-text js-input" type="number" required formControlName="units_sold">
-        <label class="label" for="email">Units</label>
+      <div class="form-field col-lg-6">
+        <div style="color: red;" *ngIf="myForm.controls.phone_number.invalid && myForm.controls.phone_number.dirty">
+          Kindly
+          input the units purchased</div>
+
+        <input id="units" class="input-text js-input" type="number" required formControlName="phone_number">
+        <label class="label" for="units">Phone Number</label>
+      </div>
+      <div class="form-field col-lg-6">
+        <div style="color: red;"
+          *ngIf="myForm.controls.delivery_location.invalid && myForm.controls.delivery_location.dirty">Kindly
+          input the units purchased</div>
+
+        <input id="units" class="input-text js-input" type="number" required formControlName="delivery_location">
+        <label class="label" for="units">Delivery location</label>
       </div>
       <div class="form-group" class="form-field col-lg-6 ">
         <select class="form-control" class="input-text js-input" formControlName="buyer">
@@ -38,6 +54,7 @@
         <input class="submit-btn" type="submit" href="/" value="Submit">
       </div>
       <pre>{{myForm.value.units_sold}}</pre>
+      <pre>{{myForm.value | json}}</pre>
 
     </form>
   </section>

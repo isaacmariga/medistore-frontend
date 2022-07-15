@@ -1,6 +1,6 @@
 body {
-  background-color: black;
   height: 100vh;
+  margin-top: 150px;
 }
 .containers {
   margin: 5%;
@@ -17,7 +17,11 @@ body {
     place-items: center;
   }
 }
-
+.search_bar {
+  width: 30vw;
+  height: 50px;
+  margin-bottom: 25px;
+}
 .medicines {
   display: grid;
   gap: 2rem;
@@ -151,4 +155,31 @@ li {
 .modal-description {
   font-size: 20px;
   color: black;
+}
+
+.btn-custom {
+  text-decoration: none;
+  margin: 5px;
+  border-radius: 20%;
+  padding: 10px 10px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #313131;
+  border-radius: 0;
+  border: 2px solid #fdbe33;
+  box-shadow: inset 0 0 0 0 #fdbe33;
+  transition: ease-out 0.3s;
+  -webkit-transition: ease-out 0.3s;
+  -moz-transition: ease-out 0.3s;
+}
+
+.btn-custom:hover {
+  color: #20212b;
+  box-shadow: inset 0 0 0 30px #fdbe33;
+}
+
+.btn-custom:focus,
+.form-control:focus {
+  box-shadow: none;
 }

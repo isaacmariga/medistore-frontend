@@ -23,6 +23,10 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FilterPipe } from './filterpipe';
+import { AccountComponent } from './account/account.component';
+import { AuthComponent } from './auth/auth.component';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -41,6 +45,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UnitFormComponent,
     DonatingThanksComponent,
     NotFoundComponent,
+    FilterPipe,
+    AccountComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +58,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoadingBarModule,
     RoundProgressModule,
     NgbModule,
+    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

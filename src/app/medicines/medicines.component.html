@@ -21,72 +21,47 @@
       </div>
     </div>
 
-    <div class="medicines">
-      <div class="item" *ngFor="let item of medicines">
+    <div class="search_bar">
 
-        <div class="card">
-          <div class="card-img-wrapper">
-            <img class="card-img-top" src="{{cloud}}{{item.picture}}" alt="
+      <input class="search_bar form-control" value={{data.name}} type="text" formControlName="name"
+        [(ngModel)]="searchText" />
+      <div class="medicines">
+        <div class="search_bar_list" *ngFor="let data of data | filter : searchText">
+          <!-- <div class="item" *ngFor="let item of medicines | filter : searchText"> -->
+
+          <div class="card">
+            <div class="card-img-wrapper">
+              <img class="card-img-top" src="{{cloud}}{{data.picture}}" alt="
               Card image cap">
-          </div>
-          <div class="card-body">
-            <div class="card-title">
-              <h5>{{item.name}}</h5>
-              <p class="card-text">{{item.description}}</p>
-
             </div>
-            <hr>
-            <ul class="prices">
-              <li><s><strong> Original Price:</strong>500/</s></li>
-              <li><strong> Discount:</strong>200</li>
-            </ul>
-            <hr>
+            <div class="card-body">
+              <div class="card-title">
+                <h2>{{data.name}}</h2>
 
-            <div class="card-content">
-              <div class="card-buttons">
-                <a href="https://medistore-apis.herokuapp.com/prescription/{{item.id}} " class="btn btn-primary">Buy</a>
-                <a href="unit-form/medicine/{{item.id}}" class="btn btn-primary">Update units</a>
-                <a href="shopping-form/medicine/{{item.id}}" class="btn btn-primary">Buy test</a>
-                <a href="/single/{{item.id}}" class="btn btn-primary">Info Page</a>
-                <button style="margin-left: 50px" attr.data-target="#{{item.id}}" type="button" class="btn btn-primary"
-                  (click)="openPopup()">Info
-                </button>
+              </div>
+              <hr>
+              <p class="card-text">{{data.description}}</p>
+
+              <hr>
+
+              <div class="card-content">
+                <div class="card-buttons">
+                  <a href="https://medistore-apis.herokuapp.com/prescription/{{data.id}} " class="btn-custom">Buy</a>
+                  <a href="unit-form/medicine/{{data.id}}" class="btn-custom">Update units</a>
+                  <a href="shopping-form/medicine/{{data.id}}" class="btn-custom">Buy test</a>
+                  <a href="/single/{{data.id}}" class="btn-custom">Info</a>
+
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- Test end -->
-        <!-- Button trigger modal -->
-
-        <div class="modal" tabindex="-1" role="dialog" id="{{item.id}}" [ngStyle]="{'display':displayStyle}">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-
-            <div class="modal-content">
-              <button type="button" class="btn btn-danger" (click)="closePopup()">
-                Close
-              </button>
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">{{item.name}}</h5>
-              </div>
-              <div class="modal-body">
-                <img class="modal-img" src="https://source.unsplash.com/rJVflgqasr4/1920x2880" alt="">
-                <p class="modal-description">{{item.description}}</p>
-              </div>
-              <div class="modal-footer">
-
-                <ul class="prices">
-                  <li><strong> Price:</strong>500</li>
-                  <li><strong> Current:</strong>400</li>
-                  <li><strong> Discount:</strong>200</li>
-                </ul>
-              </div>
-            </div>
-          </div>v>
+          <!-- Test end -->
+          <!-- Button trigger modal -->
         </div>
       </div>
     </div>
+    <!-- </div> -->
   </div>
-
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"

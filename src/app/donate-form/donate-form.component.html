@@ -1,6 +1,15 @@
-<div *ngFor="let disease of diseases">
+<div class="container">
+    <div *ngFor="let disease of diseases">
 
-    <h1>{{disease.name}}</h1>
-    <a href="/donation-form/{{disease.id}}">Link</a>
-
+        <a href="/donation-form/{{disease.id}}">
+            <div class="hover hover-2 text-white rounded"><img src="{{cloud}}{{disease.picture}}" alt="">
+                <div class="hover-overlay"></div>
+                <div class="hover-2-content px-5 py-4">
+                    <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> <span
+                            class="font-weight-light">{{disease.name}}</span></h3>
+                    <p class="hover-2-description  mb-0">Kindly Donate to {{disease.name}}</p>
+                </div>
+            </div>
+        </a>
+    </div>
 </div>
